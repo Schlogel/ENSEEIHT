@@ -1,0 +1,6 @@
+module tri_tab (rst, clk, cal, ad1[7..0], ad2[7..0] : etats[4..0], calMin, adCour[7..0], etats_min[3..0], min[31..0], adMin[7..0], adRam[7..0], inRam[31..0], wRam, outRam[31..0])
+cal_min(rst, clk, cal, ad1[7..0], ad2[7..0], elemCour[31..0] : adCour[7..0], min[31..0], adMin[7..0], INITAD, INITMIN, MAJMIN, FINI)
+tri_tab_int (rst, clk, cal, ad1[7..0], ad2[7..0], minOK : etats[4..0], calMin, adCour[7..0])
+adRam[7..0] = cal * MAJMIN * wRam * adMin[7..0] + /cal * ad1[7..0] 
+
+end module

@@ -1,0 +1,5 @@
+module count2 (rst, clk, en : c[1..0])
+   T[0] = 1
+   T[1] = c[0]
+   c[1..0] := /T[1..0]*c[1..0] + T[1..0]*/c[1..0] on clk reset when rst enabled when en
+end module

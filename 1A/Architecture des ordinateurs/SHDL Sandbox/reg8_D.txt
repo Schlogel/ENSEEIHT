@@ -1,0 +1,3 @@
+module reg8_D (rst, clk, en, e[7..0] : sr[7..0])
+	sr[7..0] := e[7..0] on clk reset when rst enabled when en
+end module

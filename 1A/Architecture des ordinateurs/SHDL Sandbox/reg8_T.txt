@@ -1,0 +1,4 @@
+module reg8_T (rst, clk, en, e[7..0] : sr[7..0])
+	sr[7..0] := /T[7..0]*sr[7..0] + T[7..0]*/sr[7..0] on clk reset when rst enabled when en
+	T[7..0] = /e[7..0]*sr[7..0] + e[7..0]*/sr[7..0] 
+end module

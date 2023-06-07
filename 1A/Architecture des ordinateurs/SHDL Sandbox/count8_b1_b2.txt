@@ -1,0 +1,14 @@
+module count8_b1_b2(rst, clk, count, init, b1[7..0], b2[7..0] : c[7..0])
+c[7..0] := /t[7..0]*c[7..0] + t[7..0]*/c[7..0] on clk reset when rst 
+
+t[0] = /init*count*sup + init*/count* (b1[0]*/c[0] + /b1[0]*c[0])
+t[1] = /init*count*sup*c[0] + init*/count* (b1[1]*/c[1] + /b1[1]*c[1])
+t[2] = /init*count*sup*c[0]*c[1] + init*/count* (b1[2]*/c[2] + /b1[2]*c[2])
+t[3] = /init*count*sup*c[0]*c[1]*c[2] + init*/count* (b1[3]*/c[3] + /b1[3]*c[3])
+t[4] = /init*count*sup*c[0]*c[1]*c[2]*c[3] + init*/count* (b1[4]*/c[4] + /b1[4]*c[4])
+t[5] = /init*count*sup*c[0]*c[1]*c[2]*c[3]*c[4] + init*/count* (b1[5]*/c[5] + /b1[5]*c[5])
+t[6] = /init*count*sup*c[0]*c[1]*c[2]*c[3]*c[4]*c[5] + init*/count* (b1[6]*/c[6] + /b1[6]*c[6])
+t[7] = /init*count*sup*c[0]*c[1]*c[2]*c[3]*c[4]*c[5]*c[6] + init*/count* (b1[7]*/c[7] + /b1[7]*c[7])
+	
+ucmp8(b2[7..0], c[7..0] : sup, eq)
+end module

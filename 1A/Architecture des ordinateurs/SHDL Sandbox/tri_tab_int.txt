@@ -1,0 +1,9 @@
+module tri_tab_int (rst, clk, cal, ad1[7..0], ad2[7..0], minOK : etats[4..0], calMin, adCour[7..0])
+etats_tri_tab(rst, clk, cal, finTab, minOK : INITAD, INITMIN, ECRIRE_TEMP, ECRIRE_MAX, FINI)
+etats[4..0] = FINI & ECRIRE_MAX & ECRIRE_TEMP & INITMIN & INITAD
+calMin = cal + /finTab + INITMIN
+count = ECRIRE_TEMP + ECRIRE_MAX + minOK
+count8_b1_b2(rst, clk, count, INITAD, ad1[7..0], ad2[7..0] : adCour[7..0])
+ucmp8(adCour[7..0], ad2[7..0] : adcour_sup_ad2, adcour_ad2_equ)
+finTab = adcour_sup_ad2 + adcour_ad2_equ
+end module

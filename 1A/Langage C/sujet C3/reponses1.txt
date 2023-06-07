@@ -1,0 +1,38 @@
+Dans ce fichier `reponses1.txt`, 
+
+
+[Question 1.1] Indiquer 
+- comment obtenir le ou les exécutables par compilation séparée.
+La création des fichiers objets se font d'abord par la commande :
+    c99 -Wextra -pedantic -c *.c
+Les executables se font par l'édition des liens entre les fichiers objets :
+    c99 file.o exemple_file.o -o exemple_file
+    c99 file.o test_file.o -o test_file
+    
+
+- les dépendances entre les fichiers qui constituent l’application.
+On constate que "file" est un module, (avec file.c et file.h), donc file.c 
+requiert l'import de file.h. Les fichiers test_file.c et exemple_file.c 
+nécessitent ce module donc on y retourve les imports de file.h au début.
+L'executable "exemple_file" requiert file.o et exemple_file.o
+L'executable "test_file" requiert file.o et test_file.o
+
+
+- le rôle de la règle `.PHONY` dans Makefile.
+Faire en sorte que l'éxecution de "make" ne vérifie pas l'état des fichiers 
+cibles listés avec cette commande, et donc empêche leur création.
+
+
+[Question 1.5] Indiquer
+- Quel est le sous-programme non-visible des autres modules et défini dans le module File.
+Il s'agit de "Cellule".
+
+
+- Que se passe-t-il si on enlève le mot-clé static à la compilation ?  
+Il ne se passe rien de particulier.
+
+
+- Quel est le risque de ne pas le mettre ?
+Que l'utilisateur utilise cette fonction alors qu'il n'est pas censé la 
+manipuler.
+

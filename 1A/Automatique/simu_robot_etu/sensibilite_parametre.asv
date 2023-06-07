@@ -1,0 +1,71 @@
+fich_simulink_etu = './robot_echant_etu';
+
+x0 = [0 pi/10 0 0]'; % initial point
+tf = 2;             % temps final
+delta_t = 0.1;      % 0.1 prcq
+algorithme = 'ode45';
+RelTol = '1e-3';
+
+% Sensibilité aux paramètres
+% -----
+
+options_sim = simset('Solver',algorithme,'RelTol',RelTol);
+x_ini = [0 0 0 0]';
+v_x = [pi/10, pi/2, pi/5, pi, 2*pi];
+
+for i = 1:5
+    %x0 = x_ini + [0 v_x(i) 0 0]';
+    affichage(fich, t0, xe, ue, x0, tf, K, options_sim);
+    simOut = sim(fich_simulink_etu,[t0 tf],options_sim);
+
+    if i == 1
+        plot (X, U);
+
+        figure;
+        graphiques(X,U)
+        figure('Name',[fich ' Sol'])
+        graphiques(X_sol,U_sol,i)
+    end
+    hold on
+    plot (X,U);
+    hold off
+end
+
+
+% Fonctions
+function affichage(fich, t0, xe, ue, x0, tf, K, options_sim);
+% 
+% Attichage des données
+    disp(fich)
+    disp('[t0 xe ue]')
+    disp([t0 xe(:)' ue(:)'])
+    disp('[x0 tf K]=')
+    disp([x0(:)' tf K])
+    disp(['algorithme = ' options_sim.Solver]);
+    disp(['RelTol = ' options_sim.RelTol]);
+    disp(['pas = ' num2str(options_sim.FixedStep)]);
+end
+
+function graphiques(x,u,i)
+    % delta_t =           % si nécessaire 
+    % Réalise les graphiques des simulations issues de simulink
+    %
+    % parametres en entrée
+    % --------------------
+    % t : temps
+    %     real (N,1)
+    % x : état
+    %     real (N,n)
+    % u : contrôle
+    %     real (N,m)
+    
+    subplot(2,i,1)
+    plot(x.Time,x.Data)
+    xlabel('t')
+    ylabel('états');
+    subplot(2,i,2)
+    plot(u.Time,u.Data)
+    xlabel('t')
+    ylabel('contrôle')
+
+end

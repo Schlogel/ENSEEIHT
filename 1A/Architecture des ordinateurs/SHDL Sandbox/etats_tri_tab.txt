@@ -1,0 +1,38 @@
+module etats_tri_tab(rst, clk, cal, finTab, minOK : INITAD, CALMIN, ECRIRE_TEMP, ECRIRE_MAX, FINI)
+
+//Ad_courante <- Ad1
+//Min <- Tab(Ad_courante)
+//Ad_Min <- Ad_courante
+//Ad_courante <- Ad_courante + 1
+//Tant Que Ad_Couante <= Ad2 Faire
+//		Si Tab(Ad_courante) < Min Alors
+//			Min <- Tab(Ad_Courante)
+//			Ad_Min <- Ad_courante
+//		Fin Si
+//		Ad_courante <- Ad_courante + 1
+//Fin TantQue
+
+//* -> INITAD 				/cal 								aucune
+//INITAD -> INITMIN 		cal 								adCour <- ad1
+//INITMIN -> MAJMIN 		cal 								min <- Tab(ad1)			
+//																	adMin <- ad1
+//MAJMIN -> MAJMIN 		cal*/finTab 					Si min < Tab(adCour)
+//																		min <- Tab(adCour)
+//																		adMin <- adCour
+//																	adCour <- adCour + 1
+//MAJMIN -> FINI 			cal*finTab 						Si min < Tab(adCour)
+//																		min <- Tab(adCour)
+//																		adMin <- adCour
+//FINI -> FINI 			cal 								aucune	
+
+INITAD := /cal on clk set when rst
+
+CALMIN := INITAD * cal + ECRIRE_MAX * cal + CALMIN * /minOK on clk reset when rst
+
+ECRIRE_TEMP := CALMIN * cal * /finTab * minOK on clk reset when rst
+
+ECRIRE_MAX := ECRIRE_TEMP * cal * /finTab  on clk reset when rst
+
+FINI := ECRIRE_MAX * cal * finTab + CALMIN * cal * finTab + FINI * cal on clk reset when rst
+
+end module

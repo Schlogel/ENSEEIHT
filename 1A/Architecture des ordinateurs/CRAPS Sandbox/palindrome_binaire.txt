@@ -1,0 +1,27 @@
+// Vérifier si un nombre est palindrome binaire
+// Méthode : calcul du nombre inverse (faible poids <-> fort poids) et comparaison avec le nombre
+initial
+// IN : r1, nombre
+// OUT : r2 = 1 si palindrome, 0 sinon
+palindrome_bin_inv: push %r3 // sauvegarde des registres modifiés
+                    push %r4
+                    push %r5
+                    push %r6
+                    set 1, %r2 // résultat <- 1
+                    set 32, %r3  // nombre de bits
+                    mov %r1, %r4 // copie du nombre
+                    clr %r5 // nombre inverse
+pbi_bcle:           andcc %r2, %r4, %r6 // isoler bit0
+                    sll %r5, 1, %r5 // r5 *2
+                    or %r5, %r6, %r5 // + bit0
+                    slr %r4, 1, %r4 // décaler d’une position -< droite
+                    deccc %r3
+                    bne pbi_bcle
+                    cmp %r1, %r5 // nombre intial ?= nombre inverse
+                    beq pbi_ret // palindrome : r2 est déjà =1
+                    clr %r2 // non palindrome
+pbi_ret:            pop %r6  // restauration des registres
+                    pop %r5
+                    pop %r4
+                    pop %r3
+                    ret

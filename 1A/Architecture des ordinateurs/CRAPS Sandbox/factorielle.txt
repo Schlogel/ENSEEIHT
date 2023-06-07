@@ -1,0 +1,37 @@
+// programme principal
+PILE = 0x200 // fond de pile à l’adresse 0x200
+N = 5
+             set PILE, %sp //initialisation du pointeur de pile : ABSOLUMENT NECESSAIRE
+             set N, %r1
+             call Facto_rec // factorille(N) – résultat dans r2
+Stop :       ba Stop
+// calcule la factorielle d’un entier naturel
+// IN : r1, contient le nombre dont veut calculer la factorielle
+// OUT : r2, contient le résultat
+Facto_rec  : set 1, %r2
+             cmp %r1, 0
+             beq Retour
+             push %r28
+             dec %r1
+             call Facto_rec
+             pop %r28
+             inc %r1
+             umulcc %r1, %r2, %r2
+             
+Retour:      pop %r1
+// restaurer r1 qui doit retrouver sa valeur d’entrée
+             ret
+             
+Factorielle: push %r1 // r1 modifié dans le sous-programme : il doit donc être
+                      // sauvegardé dans la pile à l’entrée et restauré à la sortie
+             set 1, %r2 // factorielle(0) ou factorielle(1)
+             
+Tantque:     cmp %r1, 1
+             bleu Retour // branchement à Retour si r1 <= 1
+             umulcc %r1, %r2, %r2 // r2 <- r1 * r2
+             dec %r1
+             ba Tantque
+
+//le contenue de %r28 est une sauvergarde de PC, pour ensuite exécuter le code de factorielle 
+//sans perdre l'insruction que nous voulions éxecuter au départ
+//à l'entrée de factorielle, le poiteur de la pile vaut 512 puis 511

@@ -1,0 +1,7 @@
+module count_012789 (rst, clk, en : c[3..0])
+	init0 = c[3]*/c[2]*/c[1]*c[0]
+   init7 = /c[3]*/c[2]*c[1]*/c[0]
+   e[3..0] = init0 * "0000" + init7 * "0111"
+   init = init0 + init7
+	count_init4 (rst, clk, en, init, e[3..0] : c[3..0])
+end module

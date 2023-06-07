@@ -1,0 +1,4 @@
+module decoder6to64(e[5..0], s[63..0])
+	decoder5to32(e[4..0],s1[31..0]) 
+   s[63..0] = e[5]*s1[31..0] & /e[5]*s1[31..0]
+end module

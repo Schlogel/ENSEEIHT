@@ -1,0 +1,23 @@
+module registres(rst, clk, areg[3..0], breg[3..0], dreg[3..0], datain[31..0] : a[31..0], b[31..0], pc[31..0], ir[31..0])
+
+r0[31..0] = "00000000000000000000000000000000"
+r1[31..0] = "00000000000000000000000000000001"
+reg32(rst, clk, dsel[2], datain[31..0] : r2[31..0])
+reg32(rst, clk, dsel[3], datain[31..0] : r3[31..0])
+reg32(rst, clk, dsel[4], datain[31..0] : r4[31..0])
+reg32(rst, clk, dsel[5], datain[31..0] : r5[31..0])
+reg32(rst, clk, dsel[6], datain[31..0] : r6[31..0])
+reg32(rst, clk, dsel[7], datain[31..0] : r7[31..0])
+reg32(rst, clk, dsel[12], datain[31..0] : r12[31..0])
+reg32(rst, clk, dsel[13], datain[31..0] : r13[31..0])
+reg32(rst, clk, dsel[14], datain[31..0] : pc[31..0])
+reg32(rst, clk, dsel[15], datain[31..0] : ir[31..0])
+
+decoder4to16(dreg[3..0], dsel[15..0])
+decoder4to16(areg[3..0], asel[15..0])
+decoder4to16(breg[3..0], bsel[15..0])
+
+a[31..0] = r0[31..0]*asel[0] + r1[31..0]*asel[1] + r2[31..0]*asel[2] + r3[31..0]*asel[3] + r4[31..0]*asel[4] + r5[31..0]*asel[5] + r6[31..0]*asel[6] + r7[31..0]*asel[7] + r12[31..0]*asel[12] + r13[31..0]*asel[13] + pc[31..0]*asel[14] + ir[31..0]*asel[15]
+b[31..0] = r0[31..0]*bsel[0] + r1[31..0]*bsel[1] + r2[31..0]*bsel[2] + r3[31..0]*bsel[3] + r4[31..0]*bsel[4] + r5[31..0]*bsel[5] + r6[31..0]*bsel[6] + r7[31..0]*bsel[7] + r12[31..0]*bsel[12] + r13[31..0]*bsel[13] + pc[31..0]*bsel[14] + ir[31..0]*bsel[15]
+
+end module

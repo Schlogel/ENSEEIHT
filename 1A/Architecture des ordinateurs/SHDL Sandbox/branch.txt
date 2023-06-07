@@ -1,0 +1,8 @@
+module branch(cond[3..0], N, Z, V, C : brok)
+// décodage de la condition
+   decoder4to16(cond[3..0] : bvc & bpos & bcc & bgu & bge & bg & bne & ba & bvs & bneg & bcs & bleu & bl & ble & be & c0)
+   NxorV = N*/V + /N*V
+   NxorVorZ = NxorV+Z
+   brok = ba + be*Z + bne*/Z + bcs*C + bcc*/C + bneg*N + bpos*/N + bvs*V + bvc*/V 
+   + ble*NxorVorZ + bg*/NxorVorZ + bl*NxorV + bge*/NxorV + bleu*(Z+C) + bgu*/Z*/C
+end module

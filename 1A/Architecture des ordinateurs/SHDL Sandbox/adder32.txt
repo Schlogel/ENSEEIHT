@@ -1,0 +1,6 @@
+module adder32(a[31..0], b[31..0], cin : s[31..0], cout)
+	adder8(a[7..0], b[7..0], cin : s[7..0], c0)
+   adder8(a[15..8], b[15..8], c0 : s[15..8], c1)
+   adder8(a[23..16], b[23..16], c1 : s[23..16], c2)
+   adder8(a[31..24], b[31..24], c2 : s[31..24], cout)
+end module

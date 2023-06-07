@@ -1,0 +1,17 @@
+// Programme pour trouver le minimum d'un tableau
+N = 10
+          set Tab1, %r1 //adresse début Tab
+          set 1, %r2 //indice courant
+          clr %r3 //indice du min
+          ld [%r1], %r4 //min (init premier elem)
+cal_min : cmp %r2, N
+          bgeu Stop
+          ld [%r1+%r2], %r5
+          cmp %r5, %r4
+          bge FinSi
+          mov %r5, %r4
+          mov %r2, %r3
+FinSi :   inc %r2
+          ba cal_min
+Stop :    ba Stop
+Tab1 :    .word 10, 9, 8, 7, 1, 6, 5, 4, 3, 2

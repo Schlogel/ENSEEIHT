@@ -1,0 +1,29 @@
+LEDS = 0xB0000000
+PILE = 0x200
+
+            ba progp // instruction à l’@ 0
+handler_IT: push %r1 // handler d’IT à l’@ 1
+            push %r2
+            push %r20
+            set LEDS, %r20
+            set compteur_IT, %r1
+            ld [%r1], %r2
+            inc %r2
+            st %r2, [%r20]
+            st %r2, [%r1]
+            pop %r20
+            pop %r2
+            pop %r1
+            reti // retour dans le prog interrompu
+
+
+// forcément après le handler d’IT
+progp:      set PILE, %sp
+            set compteur_IT, %r1
+            st %r0, [%r1]
+pbcle:      nop
+            nop
+            nop
+            ba pbcle
+            
+compteur_IT: .word 0

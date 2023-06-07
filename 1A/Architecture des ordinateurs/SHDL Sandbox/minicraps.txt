@@ -1,0 +1,47 @@
+module minicraps(rst, clk, on, bregin[3..0], adin[7..0] : abus[31..0], bbus[31..0], rambus[31..0], dbus[31..0], pc[31..0], ir[31..0], flags[3..0], etats[4..0])
+  
+	// on = 1 : mode exécution / on = 0 : mode lecture (registres et ram)
+	// on = 0 : on lit la mémoire sur rambus à l'adresse entrée sur adin
+	// on = 0 : on lit sur bbus le registre dont le numéro est entré sur bregin
+   
+	// horloge active seulement quand on = 1
+	clkon = clk*on
+   
+	// REGISTRES
+   registres(rst, clkon, areg[3..0], breg[3..0], dreg[3..0], dbus[31..0] : abus[31..0], bbus[31..0], pc[31..0], ir[31..0])
+   
+	// on = 0 : on lit sur bbus le registre dont le numéro est entré sur bregin
+	// on = 1 : on lit sur bbus le registre dont le numéro bregseq est fourni par le sequenceur
+	breg[3..0] = on*bregseq[3..0] + /on*bregin[3..0]
+   
+	// UAL
+   ual(abus[31..0], bbus[31..0], ualCmd[3..0] : ualbus[31..0], ualN, ualZ, ualV, ualC)
+   
+	// FLAGS
+	N := ualN on clkon reset when rst enabled when setflags
+	Z := ualZ on clkon reset when rst enabled when setflags
+	V := ualV on clkon reset when rst enabled when setflags
+  	C := ualC on clkon reset when rst enabled when setflags
+
+	flags[3..0] = N & Z & V & C
+   
+	// RAM 1K (256 mots de 32 bits)
+	// on = 0 : on lit la mémoire sur rambus à l'adresse entrée sur adin
+	// on = 1 : on lit la mémoire sur rambus à l'adresse fournie par abus
+	adr[7..0] = abus[7..0]*on + adin[7..0]*/on
+	$ram_aread_swrite(clkon, write, adr[7..0], dbus[31..0] : rambus[31..0])
+   
+	// DBUS : affectation tristate - avantage : l'exclusité entre les termes when est vérifiée
+	// mieux que l'affectation classique :  
+	// dbus[31..0] = ualbus[31..0]*/dbusIn[1]*dbusIn[0] + rambus[31..0]*dbusIn[1]*/dbusIn[0] + bbus[31..0]*dbusIn[1]*dbusIn[0]
+   
+	dbus[31..0] = ualbus[31..0] output enabled when /dbusIn[1]*dbusIn[0]	
+	dbus[31..0] = rambus[31..0] output enabled when dbusIn[1]*/dbusIn[0]
+	dbus[31..0] = bbus[31..0] output enabled when dbusIn[1]*dbusIn[0]
+  
+	// SEQUENCEUR
+	// Remplacer les 0 par les nouveaux états ajoutés pour l'accès mémoire et branch
+	etats[4..0] = fetch & decode & pcplus1 & 0 & 0
+   sequenceur(rst, clkon, ir[31..16], N, Z, V ,C : fetch, decode, pcplus1, areg[3..0], bregseq[3..0], dreg[3..0], ualCmd[3..0], dbusIn[1..0], write, setflags)
+   
+end module

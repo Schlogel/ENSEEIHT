@@ -1,0 +1,90 @@
+module sequenceur(rst, clk, ir[31..16], N, Z, V, C : fetch, decode, pcplus1, areg[3..0], breg[3..0], dreg[3..0], ualCmd[3..0], dbusIn[1..0], write, setFlags)
+
+fetch := pcplus12fetch + decode2fetch on clk set when rst
+decode := fetch2decode on clk reset when rst
+pcplus1:= decode2pcplus1al + decode2pcplus1set + adresse2pcplus1ld + adresse2pcplus1st on clk reset when rst
+adresse := decode2adresse on clk reset when rst
+branch := decode2branch on clk reset when rst
+
+branch(ir[27..24], N, Z, V, C : brok)
+setFlags = decode2pcplus1al
+
+pcplus12fetch = pcplus1
+
+fetch2decode = fetch
+
+branch2fetch = branch
+
+decode2pcplus1al = decode*/ir[31]
+decode2pcplus1set = decode*ir[31]*ir[30]*/ir[29]*/ir[28]
+decode2adresse = decode*ir[31]*/ir[30]*/ir[29]
+decode2branch = decode*brok*ir[31]*ir[30]*ir[29]*/ir[28]
+decode2fetch = decode*/brok*ir[31]*ir[30]*ir[29]*/ir[28]
+
+adresse2pcplus1ld = adresse*/ir[28]
+adresse2pcplus1st = adresse*ir[28]
+
+areg[3..0] =
+			fetch2decode*"1110"
+			+ decode2pcplus1al*ir[23..20]
+			+ pcplus12fetch*"1110"
+			+ decode2pcplus1set*"1111"
+			+ decode2adresse*ir[23..20]
+			+ adresse2pcplus1ld*"1100"
+			+ adresse2pcplus1st*"1100"
+         + decode2branch*"1111"
+         + decode2fetch*"1110"
+         + branch2fetch*"1110"
+
+breg[3..0]=
+			fetch2decode*"0000"
+			+ decode2pcplus1al*ir[19..16]
+			+ pcplus12fetch*"0001"
+			+ decode2pcplus1set*"0000"
+			+ decode2adresse*ir[19..16]
+			+ adresse2pcplus1ld*"0000"
+			+ adresse2pcplus1st*ir[27..24]
+         + decode2branch*"0000"
+         + decode2fetch*"0001"
+         + branch2fetch*"1101"
+
+
+dreg[3..0] =
+			fetch2decode*"1111"
+			+ decode2pcplus1al*ir[27..24]
+			+ pcplus12fetch*"1110"
+			+ decode2pcplus1set*ir[27..24]
+			+ decode2adresse*"1100"
+			+ adresse2pcplus1ld*ir[27..24]
+			+ adresse2pcplus1st*"0000"
+         + decode2branch*"1101"
+         + decode2fetch*"1110"
+         + branch2fetch*"1110"
+
+ualCmd[3..0] =
+			fetch2decode*"0000"
+			+ decode2pcplus1al*ir[31..28]
+			+ pcplus12fetch*"0000"
+			+ decode2pcplus1set*"1100"
+			+ decode2adresse*"0000"
+			+ adresse2pcplus1ld*"0000"
+			+ adresse2pcplus1st*"0000"
+         + decode2branch*"1100"
+         + decode2fetch*"0000"
+         + branch2fetch*"0000"
+
+dbusIn[1..0] =
+			fetch2decode*"10"
+			+ decode2pcplus1al*"01"
+			+ pcplus12fetch*"01"
+			+ decode2pcplus1set*"01"
+			+ decode2adresse*"01"
+			+ adresse2pcplus1ld*"10"
+			+ adresse2pcplus1st*"11"
+         + decode2branch*"01"
+         + decode2fetch*"01"
+         + branch2fetch*"01"
+
+write = adresse2pcplus1st
+
+end module

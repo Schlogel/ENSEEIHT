@@ -1,2 +1,0 @@
-Dsp theo 
-Sx(f) = const * [ SNRZ(f+f0) + SNRZ(f-f0) + SNRZ(f+f1) + SNRZ(f-f1) ]

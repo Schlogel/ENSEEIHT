@@ -1,0 +1,26 @@
+//Passage 1 : %sp = 00000041
+//Passage 2 : %sp = 00000042
+//Passage 3 : %sp = 00000043
+//Passage 4 : %sp = 00000044
+//Ce programme empile dans la ram les éléments d'un tableau
+PILE = 0x200 // fond de pile à l’adresse 0x200
+          set PILE, %sp // initialisation du pointeur de pile
+          set Chaine, %r1
+          clr %r2 // %r2 <- 0 : nombre d’éléments
+Repeter:  ld [%r1], %r3
+          cmp %r3, %r0 // r3 ? 0
+          beq FinRepet
+          push %r3 // %r3 -> sommet de pile
+          inc %r2 // add %r2, 1, %r2
+          inc %r1 // adresse du prochain élément
+          ba Repeter
+FinRepet: set Chaine, %r1
+Depiler : cmp %r2, %r0 // r3 ? 0
+          beq Stop
+          pop %r3
+          st %r3, [%r1]
+          inc %r1
+          dec %r2
+          ba Depiler
+Stop :    ba Stop
+Chaine :  .word 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0 // 0 = fin d chaine

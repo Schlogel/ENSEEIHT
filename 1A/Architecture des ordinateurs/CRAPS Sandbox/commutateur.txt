@@ -1,0 +1,97 @@
+SWITCHES = 0x90000000
+LEDS = 0xB0000000
+NB_PROG = 2
+PILE1 = 0x200
+PILE2 = 0x300
+N = 2
+
+ba Init
+handler : push %r1
+          push %r2
+          push %r3
+          push %r4
+          push %r5
+          push %r6
+          push %r7
+          push %r8
+          push %r9
+          push %r10
+          push %r28
+          st %sp, [%r19 + %r17]
+          inc %r17
+          cmp %r17, %r18
+          blu suite
+          clr %r17
+suite :   ld [%r19 + %r17], %sp
+          pop %r28
+          pop %r10
+          pop %r9
+          pop %r8
+          pop %r7
+          pop %r6
+          pop %r5
+          pop %r4
+          pop %r3
+          pop %r2
+          pop %r1
+          reti
+
+Init : set NB_PROG, %r18
+       set N, %r2
+       set Tab_sp, %r19
+       set 1, %r17
+       ld [%r19 + %r17], %sp
+       set prog2, %r1
+       push %r1
+       push %r0
+       push %r0
+       push %r0
+       push %r0
+       push %r0
+       push %r0
+       push %r0
+       push %r0
+       push %r0
+       push %r0
+       push %r0
+       push %r0
+       st %sp, [%r19 + %r17]
+       clr %r17
+       ld [%r19 + %r17], %sp
+       
+ 
+prog1 :             clr %r1
+                    set N, %r2
+                    set SWITCHES, %r16
+                    set LEDS, %r20
+                    set 0xFF, %r3
+boucle1 :           inc %r1
+                    call Afficher_leds_7_0
+                    call waitinit
+                    ba boucle1
+Afficher_leds_7_0 : and %r1, %r3, %r1
+                    st %r1, [%r20]
+                    
+                    
+waitinit : umulcc %r2, 4, %r2
+wait :     cmp %r2, 0
+           bleu stopwait
+           dec %r2
+           ba wait
+stopwait : set N, %r2
+           ret
+
+         
+prog2 :              clr %r1
+                     set N, %r2
+                     set SWITCHES, %r16
+                     set LEDS, %r20
+                     set 256, %r3
+boucle2 :            inc %r1
+                     call Afficher_leds_15_8
+                     call wait
+                     ba boucle1
+Afficher_leds_15_8 : and %r1, %r3, %r1
+                     st %r1, [%r20]
+
+Tab_sp : .word PILE1, PILE2

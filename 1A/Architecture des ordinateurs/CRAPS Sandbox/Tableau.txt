@@ -1,0 +1,28 @@
+//Passage 1 : %r4 = 0000000a
+//Passage 2 : %r4 = 00000009
+//Passage 3 : %r4 = 00000008
+//Passage 4 : %r4 = 00000007
+//Passage 5 : %r4 = 00000001
+//Passage 6 : %r4 = 00000006
+//Passage 7 : %r4 = 00000005
+//Passage 8 : %r4 = 00000004
+//Passage 9 : %r4 = 00000003
+//Passage 10 : %r4 = 00000002
+//Passage 11 : %r4 = 00000001
+N = 11 // N constante, pour éviter d’utiliser des valeurs en dur dans le programme
+         set Tab1, %r1
+         set Tab2, %r2
+         clr %r3
+         clr %r5
+         set N, %r5
+Tantque: cmp %r3, N
+         bgeu Stop // branch if r3 greater or equal unsigned to N
+         ld [%r1+%r3], %r4 // ld = load - %r2+%r3]= adresse de tab(r3)
+         st %r4, [%r2+%r5]
+         add %r3, 1, %r3 // index <- index + 1
+         sub %r5, 1 ,%r5
+         ba Tantque
+Stop :   ba Stop
+Tab1 :   .word 10, 9, 8, 7, 1, 6, 5, 4, 3, 2, 1
+Tab2 :   .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+// La manipulation de la partie A.3 fonctionne

@@ -1,0 +1,4 @@
+module ucmp1(a, b : sup, equ)
+	sup = a*/b
+   equ = a*b + /a*/b
+end module

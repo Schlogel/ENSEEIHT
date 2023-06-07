@@ -1,0 +1,11 @@
+SWITCHES = 0x90000000
+LEDS = 0xB0000000
+Mask = 256
+
+        set SWITCHES, %r19
+        set LEDS, %r20
+        set Mask, %r3
+boucle: ld [%r19], %r1
+        umulcc %r1, %r3, %r1
+        st %r1, [%r20]
+        ba boucle

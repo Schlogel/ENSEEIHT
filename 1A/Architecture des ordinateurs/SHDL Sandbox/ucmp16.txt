@@ -1,0 +1,6 @@
+module ucmp16(a[15..0], b[15..0], sup, equ)
+	ucmp8(a[7..0],b[7..0],sup1,equ1)
+   ucmp8(a[15..8],b[15..8],sup2,equ2)
+   equ = equ1*equ2
+   sup = sup2 + equ2*sup1
+end module
