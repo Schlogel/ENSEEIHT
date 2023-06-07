@@ -1,0 +1,23 @@
+V "GNAT Lib v10"
+A -gnatwa
+P ZX
+
+RN
+RV NO_ELABORATION_CODE
+
+U sda_exceptions%s	sda_exceptions.ads	58fab764 EE OO PK
+Z system%s		system.ads		system.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20220628085427 76789da1 ada%s
+D a-unccon.ads		20220628085427 0e9b276f ada.unchecked_conversion%s
+D sda_exceptions.ads	20221110084456 58fab764 sda_exceptions%s
+D system.ads		20220628085427 4635ec04 system%s
+D s-exctab.ads		20220628085427 54135002 system.exception_table%s
+D s-stalib.ads		20220628085427 09bd3940 system.standard_library%s
+G a e
+X 3 sda_exceptions.ads
+2K9*SDA_Exceptions 6l5 6e19
+4X9*Cle_Absente_Exception
+

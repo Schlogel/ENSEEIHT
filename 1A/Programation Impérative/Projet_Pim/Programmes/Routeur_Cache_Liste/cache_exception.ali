@@ -1,0 +1,31 @@
+V "GNAT Lib v2021"
+A -gnatwa
+A -gnata
+A -g
+P ZX
+
+RN
+RV NO_ELABORATION_CODE
+
+U cache_exception%s	cache_exception.ads	35cb9f17 EE OO PK
+Z system%s		system.ads		system.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20210520051130 76789da1 ada%s
+D a-unccon.ads		20210520051129 0e9b276f ada.unchecked_conversion%s
+D cache_exception.ads	20230104092057 35cb9f17 cache_exception%s
+D system.ads		20210520051134 a2da961d system%s
+D s-exctab.ads		20210520051131 54135002 system.exception_table%s
+D s-stalib.ads		20210520051133 472fbca8 system.standard_library%s
+G a e
+X 3 cache_exception.ads
+2K9*Cache_exception 12l5 12e20
+4X9*Taille_Not_Integer
+5X5*Politique_Pas_Valide
+6X5*Fichier_Table
+7X5*Fichier_Paquet
+8X5*Destination_Absente
+9X5*Mauvaise_Adresse_IP
+10X5*Mauvaise_Ecriture_Table
+

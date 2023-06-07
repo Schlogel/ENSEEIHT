@@ -1,0 +1,125 @@
+Type et package utilisé:
+
+Type T_Noeud
+
+Type T_Arbre is acces T_Neoud
+
+Type T_Noeud is record 		
+	chemin				-- L'adresse se construit au fur et a mesure qu'on avance dans l'abre préfixe
+	fils_G: T_Arbre			--Le masque est a -1 tant qu'on a pas trouvé un chemin qui est dans le cache
+	fils_D: T_Arbre			--L'interface est à -1 tant qu'on a pas trouvé un chemin qui est dans le cache
+
+Type T_chemin is record 
+	adresse:T_Adresse_IP
+	masque:	T_Adresse_IP
+	interface: String
+
+Type T_historique is array(0..Taille) of T_chemin 	--Taille est la taille maximal du cache. Ce type permeettra de mêttre en place la politique LRU
+
+
+Package ARBRE_PRE :
+
+Initialiser(arbre: T_arbre) Initialise un arbre vide
+Taille(arbre: T_arbre) renvoie le nombre de noeud dans Arbre
+Supprimer(arbre: T_arbre, chemin: T_chemin) Supprimer chemin dans arbre si chemin est dans arbre, sinon, il ne fait rien
+Enregistrer(arbre: T_arbre, chemin: T_chemin)
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+R0: Trouver le chemin correspondant
+
+R1: comment "trouver le chemin correspondant" ?
+	Traiter une ligne du fichier texte
+	Commande <- ligne(i)			--commande out
+	selon commande				--commande in
+	Est_Une_Commande_terminal : 
+		éxecuter la commande
+	commande est une adresse:
+		adresse <- commande			adresse out
+		Chercher le chemin dans le cache 	bool: in
+		Si bool 
+			Renvoyé chemin
+		Si Non(bool) 				bool: out
+			chercher le chemin dans la table
+			Inserer le chemin dans le cache
+
+
+
+R2: Comment "Chercher le chemin dans le cache" ?
+	adrese_bin <- Conversion_Bin(adresse)	--adresse in, adresse out
+	i <- 1
+	copie := Arbre				--copie out, Arbre in	
+	Tant que copie.masque=-1 faire		masque : out --Si on copie =-1, alors on est pas encore sur un feuille. dès que copie /=-1, on a trouvé une feuille.
+		 Si adresse_bin(i)=1 alors 	--adresse_bin out
+			copie <- Arbre.Fils_Droit   copie out arbre in
+		Sinon
+			copie <- Abre.Fils_Gauche   copie out arbre in
+		i <- i+1
+	Fin tant que
+	bool <- true
+	bool := copie.adresse and masque = adresse_bin
+	renvoyer bool
+
+
+R2: Comment "Chercher le chemin dans la table" ?
+	chemin: T_chemin
+	précision_max: T_Adresse_IP
+	Pour i allant de 1 à Longueur(table) faire
+		Si chemin.adresse = table(i).adresse alors
+			
+
+
+
+R2: Comment "inserer le chemin dans le cache" ?
+
+	historique: T_historique
+	chemin: T_chemin
+	bool: Boolean 								--variable stockant si chemin est dans historique
+	Sauvegarde : T_chemin
+	Si taille(arbre) = long alors			arbre out, long in 	-- long est la taille maximal que peut prendre le cache.
+		bool <- Verifier si chemin est dans historique 	
+		Si bool alors 
+			décaler les élement de 1 jusqu'à indice 		--On actualise l'historique
+			historique(1)<-chemin
+
+		Si Non(bool) alors 
+			Supprimer(arbre, historique(long))			--On supprime l'élement de moins récement utilisé qui est dans le cache
+			Enregistrer(arbre, chemin)				--On ajoute chemin dans le cache, c'est à dire l'élement qui vient d'être utilisé
+			décaler les élement de historique 			--On actualise l'historique
+			historique(1) <-chemin
+
+
+R3: Comment "Verifier si chemin est dans historique"
+	Pour i allant de 1 a long faire
+		Si chemin = historique(i)
+			renvoyer(true)
+
+
+R3: Comment "décaler les élement de 1 jusqu'a l'emplacement de chemin"
+	i=1
+	while historique(i+1) /= chemin faire		historique : in, sauvegargde: in
+		historique(i) <- Sauvegarde		historique : out, sauvegargde: in
+		sauvegarde <- historique(i+1)		historique : in, sauvegargde: out
+		i=i+1					i : in/out
+	historique(i+1) <- Sauveagrde 			historique : out, sauvegargde: in
+
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+	

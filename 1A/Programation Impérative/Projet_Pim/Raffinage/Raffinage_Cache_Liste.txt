@@ -1,0 +1,151 @@
+Type et package utilisée : 
+
+type T_Destination est Adresse_IP;
+type T_Masque est Adresse_IP;
+
+type T_Route;
+
+type Capacite est un entier;
+   
+type T_Cache est accès T_Route;
+
+type T_Route est énumération
+    Destination : T_Destination; -- T_Destination 
+    Masque : T_Masque;
+    Interfarce : String;
+    Nbr_utilisation : Integer; -- Compte le nombre de fois qu'une route est utilisée.
+    Suivant : T_Route
+end record;
+
+Initialiser(Cache : T_Cache) -- Initialise un cache vide
+Taille(Cache : T_Cache) -- Renvoie la taille du cache (soit le nombre de route)
+    -- Post condition : Taille(Cache) <= Capacité
+Supprimer(Cache : T_Cache, i : Integer) -- Supprimer la route n°i du cache
+Enregistrer(Cache : T_Cache, i : Integer, Destination : T_Destination, Masque : T_Masque, Interfarce : String, Nbr_utilisation : Integer) -- Enregistre la route en position n°i
+    -- Pré condition : Taille(Cache) < Capacité
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+R0 : Consulter le cache pour trouver une potentielle interface correspondante
+
+R1 : Comment "Consulter le cache pour trouver une potentielle interface correspondante"
+    Politique <- Caractère 
+    Résultat_Cache <- Booléan -- Indique si il y a une route valide dans le cache
+    Route_Utilisée <- T_Route
+    Lire(Politique)
+<<<<<<< HEAD
+    Chercher la destination du cache la plus précise -- Cache : in, Dans_Cache : in out, Route_Utilisée : in out
+    Si Dans_Cache est vraie alors
+        Traiter le cache en fonction de la politique -- Cache : in out, politique : in, Route_Utilisée : in out
+=======
+    Chercher la destination du cache la plus précise
+    Si Résultat_Cache est vraie alors
+        Traiter le cache en fonction de la politique
+        Interface_Cache <- Interface è utiliser  -- Ici c'est celle de T_route
+>>>>>>> 380e1acaf95c0751b18cce2d4168603cf970c3c2
+    Sinon
+        Ajouter l'adresse dans le cache en fonction de la politique -- Cache : in out, politique : in, Route_Utilisée : in out
+    Fin Si
+
+R2 : Comment "Chercher la destination la plus précise"
+    Intialiser(Route_Utilisée)
+    Pour i allant de 0 à Taille(Cache)
+<<<<<<< HEAD
+        Dans_Cache <- Faux  
+        Dans_Cache <- Comparer le paquet avec la destination et le masque n°i du cache -- Vrai si la destination n°i correspond au paquet -- Cache : in
+        Si Dans_Cache Vrai alors
+            Comparer si le masque n°i est plus grand que le masque de Route_Utilisée -- Route_Utilisée :in, On regarde si la destination n°i est plus précise que Route_Utilisée
+=======
+        Résultat_Cache <- Faux  
+        Résultat_Cache <- Comparer le paquet avec la destination et le masque n°i du cache (Vrai si la destination n°i correspond au paquet)
+        Si Résultat_Cache Vrai alors
+            Comparer si le masque n°i est plus grand que le masque de Route_Utilisée -- On regarde si la destination n°i est plus précise que Route_Utilisée
+>>>>>>> 380e1acaf95c0751b18cce2d4168603cf970c3c2
+            Si Vrai alors
+                Route_Utilisée <- Route n°i du Cache
+            Sinon
+                Rien
+        Sinon
+            Rien
+        Fin Si
+    Fin Pour
+
+R2 : Comment "Traiter le cache en fonction de la politique"
+    Si Politique = LRU Alors
+        Supprimer Route_Utilisée du Cache
+        Enregistrer Route_Utilisée au début du Cache -- La route vient d'être utilisée donc on la place au début
+    Si Sinon Politique = LFU Alors
+        Supprimer Route_Utilisée du Cache
+        Enregistrer Route_Utilisée au début du Cache en ajoutant 1 au nombre d'utilisation
+    Sinon
+        Rien
+    Fin Si
+
+R2 : Comment "Ajouter une route dans le cache en fonction de la politique"
+    Modifier l'adresse de Route_Utilisée en fonction de la table et du paquet pour la cohérence du cache
+    Si Taille(Cache) < Capacite_Cache Alors
+        Si Politique = FIFO Alors
+            Ajouter Route_Utilisée à la fin du Cache -- Cache : out 
+        Si Sinon Politique = LRU Alors
+            Ajouter Route_Utilisée au début du Cache -- Cache : out
+        Sinon
+            Ajouter Route_Utilisée au début du Cache et mettre Nbr_utilisation à 1 -- Cache : out
+    Sinon 
+        Si Politique = FIFO Alors
+            Supprimer la premiere route du Cache -- Cache : out 
+            Ajouter Route_Utilisée à la fin du Cache  -- Cache : out 
+        Si Sinon Politique = LFU Alors
+            Supprimer la route la moins utilisée  -- Cache : out    --cache correspond à une LCA dont la cellule  regroupe une route et nbr_de_fois_utilisée 
+            Ajouter Route_Utilisée au début du Cache -- Cache : out
+        Sinon  -- Politique = LRU 
+           Supprimer la derniere route du Cache   -- Cache : out    -- La derniere route correspond à la plus ancienne utilisée 
+           Ajouter Route_Utilisée au début du Cache   -- Cache : out    -- ajout se fait au debut parce que la route vient d'etre utilisee.
+    Fin Si
+
+R3 : Comment "Comparer le paquet avec la destination et le masque n°i du cache "
+    Si (paquet i et masque i) = destination i alors
+        Résultat_Cache = Vrai
+    Sinon
+        Rien
+    Fin si
+
+R3:Comment "Supprimer la cellule la moins utilisée"
+    Route : T_Route <- Cache -- Pour parcourir le cache  -- Cache : in
+    Min : Integer <- Route.all.Nbr_utilisation -- Nombre d'utilisation de la première route
+    Index :  Integer <- 0 -- Index de la première route
+    Pour i allant de 1 à Taille(Cache) Faire
+        Si Min <= Au nombre d'utilisation de la route suivant Alors
+            Route <- La route suivante
+        Sinon
+            Route <- La route suivante
+            Min <- Nbr_utilisation de la route
+            Index <- i
+    Supprimer la route correspondant à Index     -- Cache : out
+
+
+R3 : Comment "Modifier l'adresse de Route_Utilisée en fonction de la table et du paquet pour la cohérence du cache"
+
+ Coherence (Route_Utilisée:in/out T_Route , Paquet: in, Adresse_Ip)  
+ – - procedure qui modifie  Route_Utilisée pour qu’elle respecte la cohérence du cache en fct du paquet choisit. 
+
+        i: integer ;  i<-0   
+        while (i <= 4) faire 
+               Si destination[i] == Paquet[i] faire
+                    i<-i+1 
+               Sinon 
+                     (Route_Utilisee.Destination)[i]<-Paquet[i]
+                    (Route_Utilisée.masque) [i]<- 255
+                     Break
+
+
+
+
+ 
+
+
+
+
+
+

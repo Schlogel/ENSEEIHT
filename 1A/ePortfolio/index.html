@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Benjamin Schlögel ePortfolio</title>
+	<link rel="icon" href="images/logobg.ico" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<!-- Alpine Plugins -->
+	<script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+	
+	<!-- Alpine Core -->
+	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper"  x-data="{ name: 'Benjamin' }">
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<a href="index.html" class="nom">Benjamin Schlögel</a>
+			<a href="index.html" class="liens">Home</a>
+			<a href="languages.html" class="liens">Languages</a>
+			<a href="study_path.html" class="liens">Study Path</a>
+			<a href="professional_experiences.html" class="liens">Professional Experiences</a>
+			<a href="civic_engagement.html" class="liens">Civic Engagement</a>
+			<a href="leisure_projects.html" class="liens">Leisure Projects</a>
+			<a href="hobbies.html" class="liens">Hobbies</a>
+			<nav class="menuburger">
+				<a href="#menu">View All</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<div class="inner">
+				<h2>View All</h2>
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="languages.html">Languages</a></li>
+					<li><a href="study_path.html">Study Path</a></li>
+					<li><a href="professional_experiences.html">Professional Experiences</a></li>
+					<li><a href="civic_engagement.html">Civic Engagement</a></li>
+					<li><a href="leisure_projects.html">Leisure Projects</a></li>
+					<li><a href="hobbies.html">Hobbies</a></li>
+				</ul>
+				<a href="#" class="close">Close</a>
+			</div>
+		</nav>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="inner">
+				<div class="logo"><img src="images/logobg.svg" alt="" style="width: 4em;"></span></div>
+				<h2>Benjamin Schlögel</h2>
+				<p>Computer sciences student at the Enseeiht</p>
+			</div>
+		</section>
+
+		<!-- Wrapper -->
+		<section id="wrapper">
+
+			<!-- One -->
+			<section id="one" class="wrapper spotlight style1">
+				<div class="inner" id="inner_right" >
+					<a href="#" class="image" id="image_right"><img src="images/profil.jpg" alt="" /></a>
+					<div class="content">
+						<h2 class="major">About Me</h2>
+						<p >I was born in Reunion Island, in Saint-Pierre. For my studies, I decided to follow the path
+							of an engineer specialized in computer science. I thus integrated the school ENSEEIHT
+							(‘École nationale supérieure d'électrotechnique, d'électronique, d'informatique,
+							d'hydraulique et des télécommunication’). I plan to work in aeronautics as a software
+							developer when I get my engineering degree.</p>
+						<a href="https://drive.google.com/file/d/1jqUKlh7MJbqjIJls3oONM8JSeP4555aw/view?usp=share_link"
+							target="_blank" class="special">View my Resume</a>
+						<a href="./presentation_video_anglais.html"
+							class="special">Video Presentation</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- Two -->
+			<!-- <section id="two" class="wrapper alt spotlight style2">
+								<div class="inner">
+									<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+									<div class="content">
+										<h2 class="major">Tempus adipiscing</h2>
+										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
+										<a href="#" class="special">Learn more</a>
+									</div>
+								</div>
+							</section> -->
+
+			<!-- Three -->
+			<!-- <section id="three" class="wrapper spotlight style3">
+								<div class="inner">
+									<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+									<div class="content">
+										<h2 class="major">Nullam dignissim</h2>
+										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
+										<a href="#" class="special">Learn more</a>
+									</div>
+								</div>
+							</section> -->
+
+			<!-- Four -->
+
+			<section id="four" class="wrapper alt style1" x-data="{show:false}" style="min-height: 50vh;" x-intersect.full="show = true">
+				<div class="inner"
+				x-show="show" 
+				x-transition:enter-start.opacity.0
+				x-transition:enter-start.scale.90
+				x-transition:enter-end.opacity.100
+				x-transition:enter-end.scale.100
+				x-transition.delay.100ms>
+					<h2 class="major">My Life's Journey</h2>
+					<p>In my 20 years of existence, I have been able to learn many things, acquire skills and develop my
+						passions. Here you will find a further summary of my professional activities and skills.</p>
+					<section class="features">
+						<article x-show="show" x-transition.delay.200ms>
+							<a href="study_path.html" class="image"><img src="images/N7.png" alt="" /></a>
+							<h3 class="major">Study Path</h3>
+							<p>Summary of the establishment that I integrated to be part of the students of the ENSEEIHT
+								in computer sciences.</p>
+							<a href="study_path.html" class="special">Learn more</a>
+						</article>
+						<article x-show="show" x-transition.delay.400ms>
+							<a href="civic_engagement.html" class="image"><img src="images/Civic_Eng.png" alt="" /></a>
+							<h3 class="major">Civic Engagement and Sustainable Development</h3>
+							<p>My commitments as a citizen and activities in which I participated.</p>
+							<a href="civic_engagement.html" class="special">Learn more</a>
+						</article>
+						<article x-show="show" x-transition.delay.500ms>
+							<a href="professional_experiences.html" class="image"><img src="images/stage.jpg" alt="" /></a>
+							<h3 class="major">Professional Experiences</h3>
+							<p>During my studies I was able to do internships in companies, to discover the professional
+								world and develop new skills.</p>
+							<a href="professional_experiences.html" class="special">Learn more</a>
+						</article>
+						<article x-show="show" x-transition.delay.600ms>
+							<a href="languages.html" class="image"><img src="images/langues.jpg" alt="" /></a>
+							<h3 class="major">Languages</h3>
+							<p>In the course of my career, I have been able to learn languages that are foreign to me. I
+								can now communicate and write in different languages.</p>
+							<a href="languages.html" class="special">Learn more</a>
+						</article>
+						<article x-show="show" x-transition.delay.700ms>
+							<a href="leisure_projects.html" class="image"><img src="images/Projects.png" alt="" /></a>
+							<h3 class="major">Leisure Projects</h3>
+							<p>Alone or with several people, I put my hobbies to the test by developing projects that I
+								realize.</p>
+							<a href="leisure_projects.html" class="special">Learn more</a>
+						</article>
+					</section>
+					<!-- <ul class="actions">
+										<li><a href="#" class="button">Browse All</a></li>
+									</ul> -->
+				</div>
+			</section>
+
+		</section>
+
+		<!-- Footer -->
+		<section id="footer">
+			<div class="inner">
+				<h2 class="major">Contacts</h2>
+				<ul class="contact">
+					<a class="social" href="mailto:benjamin.schlogel@etu.toulouse-inp.fr">
+						<li class="icon solid fa-envelope"></li>
+					</a>
+					<a class="social" href="https://www.linkedin.com/in/benjamin-schl%C3%B6gel/?locale=en_US">
+						<li class="icon brands fa-linkedin"></li>
+					</a>
+					<a class="social" href="tel:+33625359198">
+						<li class="icon solid fa-phone"></li>
+					</a>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Benjamin Schlögel's ePortfolio</li>
+				</ul>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>
+		function isInViewport(element) {
+				let rect = element.getBoundingClientRect();
+				console.log(rect);
+				return (
+					rect.top >= 0 &&
+					rect.left >= 0 &&
+					rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+					rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+				);
+			}
+	</script>
+
+</body>
+
+</html>

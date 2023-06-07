@@ -1,0 +1,52 @@
+V "GNAT Lib v10"
+A -gnatwa
+P ZX
+
+RN
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U alea%b		alea.adb		24560dec NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.discrete_random%s
+W system%s		system.ads		system.ali
+Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
+
+U alea%s		alea.ads		9fe1c6b1 BN EE NE OO PK GE
+
+D ada.ads		20210408115627 76789da1 ada%s
+D a-numeri.ads		20210408115627 bb51c45a ada.numerics%s
+D a-nudira.ads		20210408115627 71e55def ada.numerics.discrete_random%s
+D a-nudira.adb		20210408115627 72908cdb ada.numerics.discrete_random%b
+D a-unccon.ads		20210408115627 0e9b276f ada.unchecked_conversion%s
+D alea.ads		20220929084941 9fe1c6b1 alea%s
+D alea.adb		20220929084941 ca5296b2 alea%b
+D interfac.ads		20210408115627 5ab55268 interfaces%s
+D system.ads		20210408115627 4635ec04 system%s
+D s-exctab.ads		20210408115627 54135002 system.exception_table%s
+D s-rannum.ads		20210408115627 99ade2f2 system.random_numbers%s
+D s-stalib.ads		20210408115627 09bd3940 system.standard_library%s
+G a e
+G c Z s b [alea standard 5 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 7|1r6 8r13
+X 2 a-numeri.ads
+16K13*Numerics 32e17 7|1r10 8r17
+X 3 a-nudira.ads
+44k22*Discrete_Random 75e33 7|1w19 8r26
+50R9 Generator<11|63R9> 7|11r31[7]
+52V13 Random{integer} 7|15s21[7]
+55U14 Reset<11|100p14> 7|19s5[7]
+X 6 alea.ads
+2i5 Lower_Bound{integer} 7|5r41
+2i18 Upper_Bound{integer} 7|5r54
+5k9*Alea 2z5 2z18 13l5 13e9 7|3b14 20l5 20t9
+11U15*Get_Random_Number 11<34 7|13b15 16l9 16t26
+11i34 Resultat{integer} 7|13b34 15m9
+X 7 alea.adb
+5I13 Intervalle{integer} 8r43
+7K14 Generateur_P[3|44] 9r9 11r18
+11r5 Generateur{3|50R9[7]} 15r29 19r11
+

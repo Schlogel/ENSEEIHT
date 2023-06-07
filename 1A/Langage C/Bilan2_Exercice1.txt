@@ -1,0 +1,39 @@
+Indiquer vos réponses aux questions de l'exercice 1 du Bilan 2 ci-après : 
+
+[B1.1] Quelle est la portée de chaque variable déclarée ? Pour chaque variable, on donnera le numéro de ligne où commence et se termine sa portée.
+variable n : (début : ligne 8 ; fin : ligne 36)
+Variable p : (début : ligne 9 ; fin : ligne 36)
+Variable *p : (début : ligne 9 ; fin : ligne 36)
+Variable a : (début : ligne 13 ; fin : ligne 17)
+Variable n (qui masque le n précédent) : (début : ligne 22 ; fin : ligne 24)
+Variable r : (début : ligne 9 ; fin : ligne 36)
+
+
+
+[B1.2] Y a-t-il un exemple de masquage de variable dans ce programme ?
+Oui, la variable `n` initialisé à la ligne 8 est masquée de la ligne 22 à 24.
+
+
+
+[B1.3] Peut-on savoir ce que devrait afficher l’exécution de ce programme ?
+Non, car cela dépend du logiciel qui compile le fichier. Par exemple lorsqu'une 
+variable est libérée, sa case mémoire devient libre et l'initialisation de la 
+variable suivante peut occuper cet espace ou non, ce qui changera ou non la 
+valeur sur laquelle `p` pointe.
+
+
+
+[B1.4] Même s’il compile sans erreur, ce programme est faux. Pourquoi ?
+Car la valeur sur laquelle pointe `p` change sans écrire de nouvelle affectation 
+avec &. Cela dû à la gestion de la mémoire du compilateur.
+
+
+
+[B1.5] La valeur de `p` change-t-elle après l’initialisation de la ligne 14 ?
+Oui, la valeur de `p` passe à 5.
+
+
+
+[B1.6] Que se passerait-il si on modifiait `*p` après la ligne 19 ?
+Donc `p` pointera sur une autre case mémoire qui ne sera pas modifiée jusqu'à la
+fin du programme.

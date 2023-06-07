@@ -1,0 +1,126 @@
+V "GNAT Lib v10"
+M P W=b
+A -gnatwa
+P SS ZX
+
+RN
+RV NO_CALENDAR
+RV NO_DELAY
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTIONS
+RV NO_FIXED_POINT
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U tables_multiplications%b  tables_multiplications.adb  03b11583 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+Z ada.numerics.discrete_random%s
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W alea%s		alea.adb		alea.ali
+W system%s		system.ads		system.ali
+Z system.concat_4%s	s-conca4.adb		s-conca4.ali
+Z system.concat_5%s	s-conca5.adb		s-conca5.ali
+Z system.concat_7%s	s-conca7.adb		s-conca7.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.img_lld%s	s-imglld.adb		s-imglld.ali
+Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
+
+D ada.ads		20210408115627 76789da1 ada%s
+D a-calend.ads		20210408115627 474d9720 ada.calendar%s
+D a-except.ads		20210408115627 a7106115 ada.exceptions%s
+D a-inteio.ads		20210408115627 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20210408115627 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20210408115627 bb51c45a ada.numerics%s
+D a-nudira.ads		20210408115627 71e55def ada.numerics.discrete_random%s
+D a-nudira.adb		20210408115627 72908cdb ada.numerics.discrete_random%b
+D a-stream.ads		20210408115627 119b8fb3 ada.streams%s
+D a-tags.ads		20210408115627 491b781d ada.tags%s
+D a-textio.ads		20210408115627 aef4d56d ada.text_io%s
+D a-tiinio.ads		20210408115627 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20210408115627 0e9b276f ada.unchecked_conversion%s
+D alea.ads		20220929084941 9fe1c6b1 alea%s
+D alea.adb		20220929084941 ca5296b2 alea%b
+D interfac.ads		20210408115627 5ab55268 interfaces%s
+D i-cstrea.ads		20210408115627 e53d8b8e interfaces.c_streams%s
+D system.ads		20210408115627 4635ec04 system%s
+D s-conca4.ads		20210408115627 7e642b20 system.concat_4%s
+D s-conca5.ads		20210408115627 875e432e system.concat_5%s
+D s-conca7.ads		20210408115627 fcc75b1f system.concat_7%s
+D s-crtl.ads		20210408115627 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210408115627 54135002 system.exception_table%s
+D s-ficobl.ads		20210408115627 078245e4 system.file_control_block%s
+D s-imgint.ads		20210408115627 02dbe0c2 system.img_int%s
+D s-imglld.ads		20210408115627 f3220969 system.img_lld%s
+D s-imguns.ads		20210408115627 9ff43cf7 system.img_uns%s
+D s-parame.ads		20210408115627 48ec542b system.parameters%s
+D s-rannum.ads		20210408115627 99ade2f2 system.random_numbers%s
+D s-rannum.adb		20210408115627 20ba1217 system.random_numbers%b
+D s-ransee.ads		20210408115627 01a57b33 system.random_seed%s
+D s-secsta.ads		20210408115627 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20210408115627 a7318a92 system.soft_links%s
+D s-stache.ads		20210408115627 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210408115627 09bd3940 system.standard_library%s
+D s-stoele.ads		20210408115627 2dc34a04 system.storage_elements%s
+D s-traent.ads		20210408115627 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20210408115627 34867c83 system.unsigned_types%s
+D s-valuns.ads		20210408115627 35067db9 system.val_uns%s
+D s-wchcon.ads		20210408115627 1b7d22d2 system.wch_con%s
+D tables_multiplications.adb  20221006154132 83a218db tables_multiplications%b
+G a e
+G c Z b b [tables_multiplications standard 6 11 none]
+G r i none [tables_multiplications standard 6 11 none] [alea standard 5 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 41|1r6 1r23 2r6 2r31 3r6 3r24
+X 2 a-calend.ads
+36K13*Calendar 409e17 41|3w10 3r28
+42I9*Time<222I9> 41|15r13 16r11
+56V13*Clock{42I9} 41|52s22 54s20
+112V14*"-"{duration} 41|67s43 68s32 69s34
+222I9 Time_Rep<long_long_integer>
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[12|46] 41|2w10 2r35
+X 8 a-nudira.adb
+53V16 Random[29|83]{integer} 30|392b13[15|7[41|22]]
+X 11 a-textio.ads
+57K13*Text_IO 727e16 41|1w10 1r27
+264U14*New_Line 41|35s13 38s13 43s17 63s13 64s13 87s9 96s9 99s9
+454U14*Get 41|98s9
+465U14*Put 41|36s13 42s17 51s13 58s17 61s17 77s13 79s13 81s13 83s13 85s13
+. 92s13 97s9
+X 12 a-tiinio.ads
+59U14*Get 41|37s13[4|18] 53s13[4|18]
+X 14 alea.ads
+5k9*Alea 13e9 41|4w6 23r13
+11U15 Get_Random_Number 41|50s13[22]
+X 16 interfac.ads
+74M9*Unsigned_32
+77M9*Unsigned_64
+X 29 s-rannum.ads
+75V13*Random{16|74M9} 30|221i21
+76V13*Random{16|77M9} 30|221i21
+X 41 tables_multiplications.adb
+6U11*tables_multiplications 6b11 103l5 103t27
+7a5 Recommencer{string} 29r12 29r35 98m14
+8i5 Table{integer} 37m18 39r20 39r32 51r66 57r27 83r139 85r115
+9b5 Depart{boolean} 33m9 34r19 40m17
+10i5 Erreurs{integer} 48m9 59m17 59r28 76r12 78r15 80r15 82r21 82r35 83r60
+. 84r21 84r35 85r37
+11i5 Reponse{integer} 53m18 57r16
+12i5 Nombre_Aleatoire{integer} 50m32 51r96 57r33 70r37
+13i5 Nb_Questions{integer} 23r22 49r23 80r25 82r46 83r47 90r34
+15i5 Debut{2|42I9} 52m13 67r45 68r34 69r36
+16i5 Fin{2|42I9} 54m13 67r39 68r28 69r30
+17o5 Temps_max{duration} 68r16 69m17 91r12 92r111
+18o5 Temps_moy{duration} 67m13 67r26 90m9 90r22 91r24 92r160
+19i5 Table_conseillee{integer} 70m17 92r69
+22K13 Mon_Alea[14|5] 24r9
+49i13 Var{integer} 51r39
+

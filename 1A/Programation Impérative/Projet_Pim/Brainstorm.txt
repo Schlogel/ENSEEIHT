@@ -1,0 +1,6 @@
+faire une structure énumération pour adresse avec 2 tableaux -> 1 pour adresse décimale et l'autre pour binaire
+-> implémentation des comparaisons (genre comparaison, mise en binaire)
+LFU -> tableau ou on classe les données en fonction du nombre de fois utilisé et on trie le tableaux et on enlenve le plus petit
+
+Variable intermédiaire pour vérifier table de routage : tableau [adresse, masque, eth] et on compare le meilleur
+

@@ -1,0 +1,92 @@
+% Compte-rendu minimal du mini-projet SDA : LCA et TH
+% Auteur : SCHLÖGEL Benjamin
+% Groupe de TP : B
+
+
+**Consigne :** Vous devez écrire vos réponse à la place des ... en laissant
+une ligne vide avant et deux après votre réponse.
+
+**Remarque :** Ce document utilise le langage Markdown. On peut en engendrer
+une version PDF en faisant par exemple :
+
+~~~
+pandoc --toc -N -o LISEZ-MOI.pdf LISEZ-MOI.txt
+~~~
+
+
+# Exercice 1
+
+## Question 1.4
+
+**Indiquer les inconvénients/avantages d'une implantation par listes chaînées
+d'une SDA.**
+
+Les avantages : 
+- module facile à implanter 
+- pas besoin de déterminer la taille de la LCA 
+- emplacement des données dans la mémoire non important
+Les incovénients :
+- lorsque la sda est très longue, la récupération des données se trouvant à la 
+fin de la sda peux prendre beaucoup de temps (temps linéaire)
+- occupe plus d'espace qu'un tableau car dans notre cas, pour chaque maillon de 
+la LCA nous devons stocker une Cle, une Donnee et Suivant.
+
+
+# Évaluation expérimentale.
+
+## Performance comparée de LCA et TH
+
+Indiquer ici les résultats obtenus.
+
+Pour Borne = 10 et Taille = 10
+TH  : real 0m0,005s ; user 0m0,005s ; sys 0m0,000s
+LCA : real 0m0,005s ; user 0m0,005s ; sys 0m0,000s
+
+Pour Borne = 100 et Taille = 1000
+TH  : real 0m0,047s ; user 0m0,037s ; sys 0m0,008s
+LCA : real 0m0,083s ; user 0m0,073s ; sys 0m0,009s
+
+Pour Borne = 1000 et Taille = 100000
+TH  : real 0m5,868s ; user 0m5,869s ; sys 0m0,000s
+LCA : real 8m59,560s ; user 8m59,689s ; sys 0m0,080s
+
+
+## Qualité du générateur aléatoire
+
+Indiquer les conclusions quant à la qualité du générateur aléatoire.
+
+On constate que en fixant Borne et en augementant taille, le rapport Max/Min converge vers 1.
+Ce qui est normal puisque le module Alea représente une variable aléatoire uniforme sur l'intervalle 
+où elle récupère ses valeurs. Pour Borne = 100 et Taille = 1000000, le programme a founit Max = 10242 et Min = 9742
+Le rapport Max/Min est d'environ 1,05. Il est important de savoir que nous ne pouvons pas atteindre le 1 exact, 
+à part ur un coup de chance. 
+
+
+# Principales difficultés rencontrées
+
+Indiquer ici les principales difficultés rencontrées lors de la réalisation de
+ce projet et comment elles ont été surmontées ou contournéeS.
+
+La rédaction du module th.adb, qui est finalement simple à rédiger mais pour cela il faut comprendre en totalité
+comment fonctionne le module lca (et comment le réutiliser) et comment doit fonctionner le module th.
+
+
+# Informations complémentaires
+
+Indiquer ici les informations qui pourraient aider à la compréhension du
+travail réalisé.
+
+Cette partie peut être vide.
+
+On constate que la table de hachage est beaucoup performante pour accéder à des données que
+la liste chaînés simple, et même dans le cas ou la fonction de hachage est basique. 
+
+
+# Bilan personnel
+
+Quel bilan personnel tirez vous de ce mini-projet ?
+
+Très enrichissant, j'ai appris beaucoup de choses sur l'instentiation des modules (savoir quoi écrire et dans quel document)
+Désormais, ma rédaction en ada est beaucoup plus fluide et intelligente qu'avant.
+
+

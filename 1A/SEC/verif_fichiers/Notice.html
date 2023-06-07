@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h2 id="avertissement">Avertissement</h2>
+<p>Le script de vérification <code>verif_fichiers.sh</code> doit être considéré comme un simple outil mis à votre disposition, pour vous fournir une indication quant à la viabilité de vos réponses, et non comme une application de validation automatique de votre travail. Simplement, si vous passez la vérification, vous pouvez avoir bon espoir quant à l'évaluation effective. Et inversement.</p>
+<p>En particulier :</p>
+<ul>
+<li>il est inutile de modifier le script pour qu'il donne une réponse <code>OK</code> : la validation se fera sur nos propres outils.</li>
+<li>le script n'est pas protégé contre les erreurs résultant de (mauvaises) actions liées à l'exécution de vos programmes. Par exemple si votre programme détruit des fichiers de manière intempestive, le script de vérification peut devenir invalide. Il est donc prudent de prévoir une sauvegarde de l'original, si vous voulez être prémunis contre ce genre d'accidents.</li>
+<li>en revanche, le script de vérification fonctionne bien avec des réponses correctes. Par conséquent, si une erreur est signalée sur une ligne du script, vous pouvez être quasi-certains que cela ne découle pas d'une erreur dans le script de test.</li>
+</ul>
+<h2 id="conventions-de-nommage">Conventions de nommage</h2>
+<p>Pour que le script de vérification <code>verif_fichiers.sh</code> puisse être appliqué :</p>
+<ul>
+<li>les fichier source des programmes à vérifier doivent être <strong>exactement</strong> nommés <code>copier.c</code> et <code>scruter.c</code>, et ils doivent être rangés dans le répertoire <code>etu</code>, situé au même niveau que <code>verif_fichiers.sh</code></li>
+<li>le répertoire contenant <code>verif_fichiers.sh</code> ne devra pas être modifié, en dehors de l'ajout des fichiers sources <code>copier.c</code> et <code>scruter.c</code>.</li>
+</ul>
+<h2 id="appel-et-résultats-du-script-de-vérification">Appel et résultats du script de vérification</h2>
+<p>Le script <code>verif_fichiers.sh</code> doit être lancé depuis un terminal, le répertoire courant étant le répertoire contenant <code>verif_fichiers.sh</code>.</p>
+<ul>
+<li>Lorsqu'il est lancé sans option, <code>verif_fichiers.sh</code> effectue un diagnostic sur les programmes <code>copier.c</code> puis <code>scruter.c</code>.<br />
+Si la vérification échoue pour l'un des programmes, le script affiche <code>KO</code>, sinon il affiche <code>OK</code>. Notez que la mention <code>OK</code> est une condition nécessaire pour que la réponse soit juste, mais que ce n'est pas une condition suffisante.<br />
+En particulier, vous êtes laissés juges de leur pertinence, mais a priori la vérification ne devrait afficher aucun warning suite à la compilation.<br />
+Lorsque le script <code>verif_fichiers.sh</code> se termine, il affiche un message <code>OK</code> ou <code>KO</code>.<br />
+Il est possible que la réponse fournie provoque le blocage du script. Dans ce cas, il faut tuer le processus exécutant le script.<br />
+Pour le programme <code>scruter.c</code> il se peut que la vérification affiche <code>??</code>. Cela signifie que la vérification n'a pas pu se faire, mais pas forcément que le programme est erroné. (Ce n'est cependant pas un très bon signe.)</li>
+<li>Lorsqu'il est lancé avec l'option <code>-s</code> (pour soumettre), le script prépare l'archive qui pourra être déposée sur Moodle. L'archive créée par l'appel de <code>verif_fichiers.sh -s</code> se trouve au même niveau que <code>verif_fichiers.sh</code><br />
+Notez qu'il n'est pas nécessaire d'avoir obtenu des <code>OK</code> pour soumettre votre travail. Mais c'est clairement préférable.</li>
+</ul>
+</body>
+</html>

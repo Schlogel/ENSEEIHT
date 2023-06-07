@@ -1,0 +1,179 @@
+DIGEST 3e03a7b5b5c26232f0f3e8f10219c975
+Fnaturelle
+R15:23 Coq.Logic.Classical <> <> lib
+R97:100 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R97:100 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R218:221 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R218:221 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+prf 278:285 <> E_imp_th
+binder 297:299 <> phi:1
+binder 301:303 <> psi:2
+R314:314 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R325:329 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R318:321 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R315:317 naturelle <> phi:1 var
+R322:324 naturelle <> psi:2 var
+R333:336 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R330:332 naturelle <> phi:1 var
+R337:339 naturelle <> psi:2 var
+R443:450 naturelle <> E_imp_th thm
+R521:528 naturelle <> E_imp_th thm
+binder 596:596 <> x:3
+binder 596:596 <> x:4
+binder 740:740 <> x:5
+binder 740:740 <> x:6
+prf 816:826 <> E_forall_th
+binder 838:838 <> A:7
+R856:859 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R855:855 naturelle <> A:7 var
+binder 849:851 <> phi:8
+binder 866:866 <> a:9
+R869:869 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R885:889 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 877:877 <> x:10
+R880:882 naturelle <> phi:8 var
+R884:884 naturelle <> x:10 var
+R890:892 naturelle <> phi:8 var
+R894:894 naturelle <> a:9 var
+R996:1006 naturelle <> E_forall_th thm
+R1086:1089 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1086:1089 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1105:1108 Coq.Init.Logic <> conj constr
+prf 1157:1165 <> E_et_g_th
+binder 1177:1179 <> phi:11
+binder 1181:1183 <> psi:12
+R1194:1194 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1205:1209 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1198:1201 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1195:1197 naturelle <> phi:11 var
+R1202:1204 naturelle <> psi:12 var
+R1210:1212 naturelle <> phi:11 var
+R1352:1360 naturelle <> E_et_g_th thm
+R1432:1440 naturelle <> E_et_g_th thm
+prf 1465:1473 <> E_et_d_th
+binder 1485:1487 <> phi:13
+binder 1489:1491 <> psi:14
+R1502:1502 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1513:1517 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1506:1509 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1503:1505 naturelle <> phi:13 var
+R1510:1512 naturelle <> psi:14 var
+R1518:1520 naturelle <> psi:14 var
+R1662:1670 naturelle <> E_et_d_th thm
+R1743:1751 naturelle <> E_et_d_th thm
+prf 1776:1782 <> E_ou_th
+binder 1794:1796 <> phi:15
+binder 1798:1800 <> psi:16
+binder 1802:1804 <> chi:17
+R1815:1815 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1826:1830 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1819:1822 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R1816:1818 naturelle <> phi:15 var
+R1823:1825 naturelle <> psi:16 var
+R1831:1831 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1842:1846 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1835:1838 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1832:1834 naturelle <> phi:15 var
+R1839:1841 naturelle <> chi:17 var
+R1847:1847 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1858:1862 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1851:1854 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1848:1850 naturelle <> psi:16 var
+R1855:1857 naturelle <> chi:17 var
+R1863:1865 naturelle <> chi:17 var
+R2042:2048 naturelle <> E_ou_th thm
+R2124:2130 naturelle <> E_ou_th thm
+R2194:2197 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R2194:2197 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R2213:2221 Coq.Init.Logic <> or_introl constr
+R2305:2308 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R2305:2308 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R2324:2332 Coq.Init.Logic <> or_intror constr
+R2416:2423 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2430:2433 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2439:2439 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 2424:2424 <> x:18
+R2438:2438 naturelle <> x:18 var
+R2416:2423 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2430:2433 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2439:2439 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 2424:2424 <> x:19
+R2438:2438 naturelle <> x:19 var
+R2453:2460 Coq.Init.Logic <> ex_intro constr
+R2561:2568 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2575:2578 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2584:2584 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 2569:2569 <> x:20
+R2583:2583 naturelle <> x:20 var
+R2561:2568 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2575:2578 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2584:2584 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 2569:2569 <> x:21
+R2583:2583 naturelle <> x:21 var
+R2597:2604 Coq.Init.Logic <> ex_intro constr
+prf 2669:2679 <> E_exists_th
+binder 2691:2691 <> A:22
+R2709:2712 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2708:2708 naturelle <> A:22 var
+binder 2702:2704 <> phi:23
+binder 2720:2722 <> chi:24
+R2733:2733 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2749:2753 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2734:2740 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2742:2743 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 2741:2741 <> x:25
+R2744:2746 naturelle <> phi:23 var
+R2748:2748 naturelle <> x:25 var
+R2754:2754 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2777:2781 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 2762:2762 <> a:26
+R2770:2773 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2765:2767 naturelle <> phi:23 var
+R2769:2769 naturelle <> a:26 var
+R2774:2776 naturelle <> chi:24 var
+R2782:2784 naturelle <> chi:24 var
+R2963:2973 naturelle <> E_exists_th thm
+R3083:3085 Coq.Init.Logic <> not def
+R3116:3120 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R3132:3132 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R3123:3126 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3127:3131 Coq.Init.Logic <> False ind
+R3116:3120 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R3132:3132 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R3123:3126 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3127:3131 Coq.Init.Logic <> False ind
+R3145:3151 Coq.Logic.Classical_Prop <> classic prfax
+prf 3209:3218 <> E_antiT_th
+binder 3230:3232 <> phi:27
+R3248:3251 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3243:3247 Coq.Init.Logic <> False ind
+R3252:3254 naturelle <> phi:27 var
+R3340:3349 naturelle <> E_antiT_th thm
+prf 3370:3379 <> I_antiT_th
+binder 3391:3393 <> phi:28
+R3407:3410 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3404:3406 naturelle <> phi:28 var
+R3411:3411 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3416:3420 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3412:3412 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3413:3415 naturelle <> phi:28 var
+R3421:3425 Coq.Init.Logic <> False ind
+R3435:3437 Coq.Init.Logic <> not def
+R3551:3555 Coq.Init.Logic <> False ind
+R3551:3555 Coq.Init.Logic <> False ind
+R3567:3576 naturelle <> I_antiT_th thm
+prf 3598:3605 <> I_non_th
+binder 3617:3619 <> phi:29
+R3630:3630 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3643:3647 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3634:3637 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3631:3633 naturelle <> phi:29 var
+R3638:3642 Coq.Init.Logic <> False ind
+R3648:3648 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3649:3651 naturelle <> phi:29 var
+R3669:3671 Coq.Init.Logic <> not def
+R3730:3731 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3730:3731 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3745:3752 naturelle <> I_non_th thm
+R3801:3810 naturelle <> I_antiT_th thm
+R3875:3878 Coq.Logic.Classical_Prop <> NNPP thm

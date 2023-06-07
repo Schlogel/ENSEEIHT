@@ -1,0 +1,121 @@
+Type et package utilisé
+
+Package Manipulation_Fichier_txt :
+
+Insérer_txt ( nom_Fichier : Chaîne de caractères  , Fichier_txt[Ligne] : Chaîne de caractères , Interface : Chaîne de caractères ) 
+Insère dans  ‘nom_Fichier.txt’ :  Fichier_txt[Ligne] et Interface puis passe à la ligne
+
+Taille_txt (  nom_Fichier : Chaîne de caractères )
+Renvoie l’entier représentant la taille du fichier ‘nom_Fichier.txt’ i.e. son nombre de ligne
+
+Afficher_txt ( nom_Fichier : Chaîne de caractères , n : entier )
+Écrit dans la console la n’ième ligne de ‘nom_Fichier.txt’
+
+Ligne_txt ( Ligne : entier , nom_Fichier : Chaîne de caractères ) 
+Renvoie (Chaîne de caractères) la Ligne du fichier ‘nom_Fichier.txt’
+
+Ligne_txt_elem ( Ligne : entier , nom_Fichier : Chaîne de caractères , Elem : entier ) 
+Renvoie (Chaîne de caractères) la donnée de ‘nom_Fichier.txt’ à la position Elem de la ligne Ligne
+ex : pour la table de routage on a sur une même ligne une IP, un masque et une interface
+donc
+Ligne_txt_elem ( 1, Table_Routage, 1) renvoie l’IP de la ligne 1 
+Ligne_txt_elem ( 4, Table_Routage, 2) renvoie le masque de la ligne 4
+Ligne_txt_elem ( 9, Table_Routage, 3) renvoie l’interface de la ligne 9
+
+Package Calcul Binaire :
+
+Conversion_bin ( Ligne : Chaîne de caractères )
+Convertit en binaire l’entier représenté par Ligne, et le renvoie 
+
+Comparer_bin ( IP : T_Bin , IP_Route : T_Bin ,  Masque_Route : T_Bin )
+Renvoie un booléen indiquant si IP correspond à IP_Route par rapport à Masque_Route
+
+
+
+
+
+
+
+Raffinages du routeur
+
+-------------------------------------------------------------------------------------------------------------
+
+R0 : Associer des adresses IP à des interfaces
+
+-------------------------------------------------------------------------------------------------------------
+
+R1 : Comment << Associer des adresses IP à des interfaces >> ?
+	Lire les entrées tapées au clavier
+    	Traiter chaque ligne du fichier texte contenant les paquets/commandes
+
+-------------------------------------------------------------------------------------------------------------
+    
+R2 : Comment << Lire les entrées tapées au clavier >> ?
+	Lire (Taille_Cache) 		 --vaut 10 par défault si pas modifié
+    	Lire (Politique_Cache)   	 --FIFO ou LRU ou LFU mais vaut FIFO par default 
+    	Lire (Fichier_txt)
+    	Lire (Resultat_txt)
+    	Cache = Initialiser_cache(Taille_Cache, Politique_Cache)   	 
+
+R2 : Comment << Traiter chaque ligne du fichier texte contenant les paquets/commandes >> ?
+    	Forced_exit <-- False		
+Forced_exit : in out Booléen
+   	Ligne <-- 1			
+Ligne : in out Entier
+    	TantQue Non(Forced_exit) Et (Ligne <= Taille_txt(Resultat_txt)) Faire
+   		Selon Ligne_txt(Ligne , Fichier_txt)  Dans
+   			'fin'   =>
+   				Ecrire('\nfin (ligne' & Ligne & ')')
+   				Forced_exit <-- True
+   			'table' =>
+   				Ecrire('\ntable (ligne' & Ligne & ')')
+   				Pour Index De 1 à Taille_txt(Table_routage) Faire
+   					Ecrire('\n' & Afficher_txt(Table_Routage, Index))
+   				Fin Pour
+   			'cache' =>
+   				Ecrire('\ncache (ligne' & Ligne & ')')
+   				Pour Index De 1 à Taille_Cache Faire
+   			 		Ecrire('\n' & Route(Cache, Index))
+   				Fin Pour
+   		 	'stat'  =>
+   				Ecrire('\nstat (ligne' & Ligne & ')')
+   				Ecrire('Taille du cache : ' & Taille(Cache) & ' ; Type de cache : ' & Type_Cache & ' ; Politique du cache : ' & Politique)
+Autres  =>
+   				Associer  Ligne_txt(Ligne , Fichier_txt) de Liste_IP à une interface   	 
+FinSelon
+   	 	Ligne <-- Ligne + 1
+Fin Pour
+    
+-------------------------------------------------------------------------------------------------------------
+
+R3 : Comment << Associer  Ligne_txt(Ligne , Fichier_txt) de Liste_IP à une interface >> ?
+	Ligne_txt <--  Ligne_txt(Ligne , Fichier_txt)		
+Ligne_txt : in Chaîne de caractères
+IP_Binaire <-- Conversion_bin(Ligne_txt)		
+IP_Binaire : in T_Bin
+   	Interface <-- Cache_Route(Cache, IP_Binaire)   		
+Interface : in Chaîne de caractères		 
+    	Si Interface /= ‘-1’ Alors    						 
+   		Insérer_txt(Resultat_txt,Ligne_txt, Interface)    	 
+    	Sinon
+   	 	Trouver l'interface correspondante dans la table de routage
+    	Fin Si
+
+-------------------------------------------------------------------------------------------------------------
+
+R4 : Comment << Trouver l'interface correspondante dans la table de routage >> ?
+    	Pour Index_Table de 1 à Taille_txt(Table_Routage) Faire
+   	 	IP_Route <-- Ligne_txt_elem ( Index_Table , Table_Routage , 1 ) 
+		IP_Route <-- Conversion_bin(IP_Route)
+IP_Route : in T_Bin
+   	 	Masque_Route <-- Ligne_txt_elem ( Index_Table , Table_Routage , 2 )
+		Masque_Route <-- Conversion_bin(Masque_Route)
+						Masque_Route : in T_Bin
+   	 	Interface_Route <-- Ligne_txt_elem ( Index_Table , Table_Routage , 3 )
+						Interface_Route : in Chaîne de caractères
+   	 	Si Comparer_bin (IP_Binaire, IP_Route, Masque_Route) Alors  
+   		 	Insérer_txt(Resultat_txt,Ligne_txt, Interface_Route)
+   		Sinon
+   		 	Rien
+   	 	Fin Si
+   	Fin Pour

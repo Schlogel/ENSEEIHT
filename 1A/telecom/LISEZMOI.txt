@@ -1,0 +1,9 @@
+Ce projet se distingue en 4 fichiers matlab :
+
+	- ModulateurBDB.m : Cette première partie correspond à la partie "2  ́Etude de modulateurs bande de base" du sujet, elle comprend les 3 modulateurs à implenter ainsi que les différents tracés à faire.
+
+	- Nyquist.m : Cette seconde partie correspond à la partie "3  ́Etude des interférences entre symbole et du critère de Nyquist" du sujet, dans cette partie nous modélisons un bloc modulateur/démodulateur, et observons l'impact du filtre du canal de transmission sur la chaine de transmission.
+
+	- Chaines_SansBruit.m : Cette troisième partie correspond aux questions de la partie 4.1, ici nous modélisons trois chaines différentes et nous observons leurs différentes caractéristiques.
+
+	- Chaines_Bruit.m : Cette dernière partie correspond aux questions de la partie 4.1.2 jusqu'à la 4.2.4. Nous utilisons les même chaines que dans la partie précédente pour observer l'impact du bruit additif Gaussien ajouté au signal dans le canal de propagation.
