@@ -1,0 +1,86 @@
+Nom       : Schlögel
+Prénom    : Benjamin
+Groupe TP : B
+
+Les « ... » indiquent les endroits à compléter.
+
+=====[ Temps passé ]============================================================
+
+Ces informations de temps sont demandées à titre indicatif et ne sont pas
+prises en compte dans la notation du projet.
+
+
+* Temps passé sur la V1 : 12 heures ... minutes
+* Temps passé sur la V2 : 7 heures 30 minutes
+
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+
+
+=====[ Questions ]==============================================================
+
+--------------------------------------------------------------------------------
+Pourquoi l'exception OperationInterditeException ne peut pas être définie
+comme vérifiée par le compilateur ?
+--------------------------------------------------------------------------------
+
+Cette exception est levé par "retirer" dans JeuProxy.java, car on ne veut pas 
+que le joueur puisse utiliser cette méthode. Cette manipulation traduit une 
+mauvaise utilisation de "retirer" dans le contexte du proxy. En particulier on 
+utilise RuntimeException car on souhaite récupérer cette exception, pour mettre 
+fin à la partie.
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qu'il faut faire pour ajouter un nouveau niveau de jeu, par
+exemple la stratégie lente (C13).  Pour plus de précision, on numérotera
+les étapes à faire.
+--------------------------------------------------------------------------------
+
+1. Il faut d'abord ajouter une classe "StrategieLente" qui implémente l'interface
+"Strategie" dans le package allumettes.
+2. Il faut ensuite ajouter les méthodes non-implémenté de Strategie i.e. getPrise
+3. La méthode getPrise doit renvoyer 1
+4. Aller dans Jouer.java et ajouter dans "setStrat" un case : "lent" qui renvoie
+"new StrategieLente()".
+5. Ajouter dans "afficherUsage" la stratégie lente dans le System.out.println().
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qui permet, dans votre conception, de changer dynamiquement
+(en cours d'exécution du programme) la stratégie d'un joueur (C14).
+--------------------------------------------------------------------------------
+
+La fonction "setStrat" dans Joueur.java permet de faire cela. De plus, il faut 
+rajouter dans Arbitre.java dans la méthode "arbitrer" une condition à la fin du
+while si le joueur courant souhaite changer de stratégie, et donc utiliser la 
+méthode "setStrat" si besoin.
+
+
+=====[ Explications ]===========================================================
+
+--------------------------------------------------------------------------------
+Donner ici les explications supplémentaires utiles à la compréhension du
+travail rendu.
+--------------------------------------------------------------------------------
+
+Les différentes stratégies sont une implémentation de l'interface 
+"Strategie.java". L'objectif est de définir différent "getPrise", une pour chaque
+stratégie. Les stratégies disponibles (sauf StrategieHumaine) sont exécutés par
+l'ordinateur et ne nécessite par l'intervention de l'utilisateur. D'autre part,
+StrategieHumaine demande via la console combien d'allumettes souhaite prendre 
+l'utilisateur. Elle prend aussi en compte si le joueur humain souhaite tricher.
+La méthode "main" dans Jouer.java se charge de récupérer correctement les données
+données en arguments et d'initialiser tout les paramètres nécessaires au début de 
+la partie. La méthode "arbitrer" dans Arbitre.java s'occupe de faire tourner la 
+partie : faire jouer les deux joueur chacun leur tour, appliquer les prise qu'ils 
+souhaitent faire sur le nombre d'allumettes restantes en jeu, et de récupérer les
+différentes exceptions lever par les méthodes appelées. La classe Joueur.java
+définit un joueur par un nom et une stratégie. Les classes JeuAllumettes.java et 
+JeuProxy.java sont des implémentations de l'interface Jeu.java. JeuProxy empêche
+les joueurs de tricher, alors que JeuAllumettes les laissent faire. Le choix 
+d'utilisation de l'implémentation de Jeu se fait par la classe Jouer.java. Si 
+l'utilisateur donne "-confiant" en premier argument alors on utilise JeuAllumettes, 
+sinon on utilise JeuProxy.
+
+
+--------------------------------------------------------------------------------

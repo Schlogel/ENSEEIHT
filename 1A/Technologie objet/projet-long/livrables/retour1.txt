@@ -1,0 +1,14 @@
+
+
+* Il faut mieux structurer votre document (qui a la fin sera votre rapport
+  final) : rappeler le sujet, donner les principales fonctionnalités.
+
+* La structure du docuemnt a plutôt intérêt à s'appuyer sur les
+  fonctionnalités réalisées.
+
+* Le diagramme de classe doit être expliqué.
+
+* Même si votre application est essentiellement graphique, il devrait y avoir
+  un modèle (des classes métier) qui pourront être réutilisées si vous changez
+  d'interface utilisateur.
+

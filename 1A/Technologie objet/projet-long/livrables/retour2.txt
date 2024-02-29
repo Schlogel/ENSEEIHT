@@ -1,0 +1,6 @@
+* Le rapport n'est pas assez informatif.  C'est le point d'entré sur le
+  travail fait.  Il ne faut pas le négliger.
+
+* Il ne faut pas oublier les aspects techniques.  Un diagramme de classe seul
+  ne suffit pas : il faut l'expliquer dans le texte (pour les choix
+  principaux).

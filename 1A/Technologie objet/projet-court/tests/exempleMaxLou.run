@@ -1,0 +1,14 @@
+java allumettes.Jouer Max@humain Lou@humain <<EOF
+2
+1
+X
+5
+0
+3
+1
+2
+2
+1
+2
+1
+EOF
